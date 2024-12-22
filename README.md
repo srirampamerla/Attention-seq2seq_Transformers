@@ -15,12 +15,12 @@
 # Implementation
 
 BERT
+![image](https://github.com/user-attachments/assets/e8f11bfd-f90e-447e-b172-8623a670ec09)
 
-![image](https://github.com/user-attachments/assets/c09d96b3-cd47-4e8d-8583-3667fdbefce2)
 
 GPT
+![image](https://github.com/user-attachments/assets/afcfb125-d9df-4aea-bd78-c800f12c28f8)
 
-![image](https://github.com/user-attachments/assets/440d208c-74b3-4fa0-a647-33560d76d9a9)
 
 T5-(Text-to-Text Transfer Transformer)
 
