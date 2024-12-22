@@ -1,145 +1,67 @@
-# Attention-seq2seq_Transformers
+# Transformers
 
-Attention Mechanisms
-Role of Q, K, V: Query (Q) represents the input's current state. Key (K) encodes all inputs' states. Value (V) contains information related to keys. Attention scores are computed as 
-softmax
-(
-𝑄
-𝐾
-𝑇
-𝑑
-𝑘
-)
-softmax( 
-d 
-k
-​
- 
-​
- 
-QK 
-T
- 
-​
- ), which are used to weight 
-𝑉
-V for focusing on relevant parts.
-Scale Factor: 
-𝑑
-𝑘
-d 
-k
-​
- 
-​
-  prevents the dot product of Q and K from growing too large, avoiding vanishing gradients when passed through softmax.
-Multi-Head Attention: Enables the model to focus on multiple aspects of the input (e.g., syntax and semantics) by splitting Q, K, V into smaller dimensions processed independently and concatenated.
-Masking: Prevents the model from attending to future tokens in sequence generation, ensuring causality.
-Self-Attention vs Cross-Attention: Self-attention attends to the same input sequence; cross-attention attends to another sequence (e.g., encoder-decoder tasks).
-Relative Positional Encoding: Explicitly represents the distance between tokens, unlike absolute positional encoding, making it better for tasks requiring long-term dependencies.
-Positional Encoding
-Why Positional Encoding? Transformers lack recurrence, so positional encoding adds sequence order information to the model.
-Sinusoidal Encoding: Uses sine and cosine functions to provide unique values based on position and dimension:
-𝑃
-𝐸
-(
-𝑝
-𝑜
-𝑠
-,
-2
-𝑖
-)
-=
-sin
-⁡
-(
-𝑝
-𝑜
-𝑠
-1000
-0
-2
-𝑖
-/
-𝑑
-)
-,
-𝑃
-𝐸
-(
-𝑝
-𝑜
-𝑠
-,
-2
-𝑖
-+
-1
-)
-=
-cos
-⁡
-(
-𝑝
-𝑜
-𝑠
-1000
-0
-2
-𝑖
-/
-𝑑
-)
-PE 
-(pos,2i)
-​
- =sin( 
-10000 
-2i/d
- 
-pos
-​
- ),PE 
-(pos,2i+1)
-​
- =cos( 
-10000 
-2i/d
- 
-pos
-​
- )
-Alternatives: Learnable embeddings or rotary positional embeddings (RoPE) allow for greater adaptability to the task.
-Encoder-Decoder Architecture
-Why Encoder-Decoder? For sequence-to-sequence tasks, the encoder captures source sequence information, and the decoder generates the target sequence.
-Masked Multi-Head Attention: Ensures the decoder only attends to previous tokens, maintaining autoregressive properties.
-Encoder-Decoder Attention: Allows the decoder to focus on the most relevant parts of the encoded source sequence.
-Transformer Variants
-BERT vs GPT:
-BERT: Bidirectional, uses Masked Language Modeling (MLM).
-GPT: Autoregressive, generates text token-by-token.
-Autoencoding vs Autoregressive: Autoencoding models (e.g., BERT) encode the full context; autoregressive models predict sequentially.
-T5: Unified framework for all NLP tasks, converts tasks into a text-to-text format.
-ViT: Splits images into patches and processes them like tokens in text.
-Transformer-XL: Adds recurrence to capture long-term dependencies.
-Longformer: Employs sparse attention for efficiency with long sequences.
-Swin Transformer: Hierarchical structure with shifted windows for image tasks.
-Optimization and Training
-Label Smoothing: Prevents the model from becoming overconfident, regularizing predictions.
-Gradient Clipping: Limits gradient magnitude to prevent exploding gradients.
-Adam with Warm-up: Addresses instability during initial training by gradually increasing the learning rate.
-Long Sequence Handling: Efficient architectures like Reformer, Sparse Transformer, and Longformer reduce computational costs.
-Applications of Transformers
-Translation Tasks: Encoder-decoder with cross-attention aligns source and target sequences.
-Summarization Models: Use pretrained Transformers like Pegasus with task-specific fine-tuning.
-Speech Recognition: Use models like Speech-Transformer; audio frames are treated as tokens.
-Real-Time Applications: Techniques like pruning, quantization, and distillation reduce latency.
-Advanced Mechanisms
-Sparsity in Attention: Reduces computational complexity by focusing on specific token pairs.
-Mixture of Experts: Activates only parts of the model, improving scalability.
-Pretraining and Fine-Tuning: Pretrained on massive corpora, fine-tuned on specific tasks to adapt to new domains.
-Code Examples
-Multi-Head Self-Attention: Python implementation of scaled dot-product attention.
-Encoder Block: Write code for multi-head attention, positional encoding, and feed-forward layers.
-Causal Masking: Add masks to attention scores before applying softmax.
+
+![image](https://github.com/user-attachments/assets/32f7ed48-54dd-4a4b-8cd2-ca36d71cf5ad)
+
+
+![image](https://github.com/user-attachments/assets/62f35196-229b-4d6d-8925-ea2e4058598b)
+
+
+![image](https://github.com/user-attachments/assets/32592ee3-21e6-4634-b951-7ce7180cf36c)
+
+
+![image](https://github.com/user-attachments/assets/9f2f4852-8e12-443f-8040-de6989122082)
+
+# Implementation
+
+BERT
+
+![image](https://github.com/user-attachments/assets/c09d96b3-cd47-4e8d-8583-3667fdbefce2)
+
+GPT
+
+![image](https://github.com/user-attachments/assets/440d208c-74b3-4fa0-a647-33560d76d9a9)
+
+T5-(Text-to-Text Transfer Transformer)
+
+![image](https://github.com/user-attachments/assets/fdcdd209-0131-40cd-af4e-e08882969c63)
+
+
+XLNET
+
+![image](https://github.com/user-attachments/assets/c934b591-45a6-4085-8152-62c68179d2d4)
+
+DistilBERT
+![image](https://github.com/user-attachments/assets/c1f74348-b80e-41f3-898f-5fa7f0affaef)
+
+
+RoBERTa
+![image](https://github.com/user-attachments/assets/edcf10c3-1f4c-4ddf-b6b7-768cdaee7451)
+
+BART
+
+![image](https://github.com/user-attachments/assets/b933ba73-98dc-4fba-9bbf-e5b266132b2e)
+
+Pegasus
+
+![image](https://github.com/user-attachments/assets/aac22386-19d3-4085-bb0b-bd7704b5c329)
+
+
+Vision Transformer (ViT)
+![image](https://github.com/user-attachments/assets/01f35336-7d6c-4d25-8d9f-b25469da22b0)
+
+
+![image](https://github.com/user-attachments/assets/16cf8afa-dbd4-4f8f-b089-0ace477db807)
+
+
+
+
+
+
+
+
+
+
+
+
+
